@@ -1,6 +1,7 @@
 import { Button } from 'antd'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuth, mockUsers } from '../context/AuthContext.jsx'
+import { useAuth, mockUsers } from '../context/AuthContext'
+import { MockUserType } from '../types'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -8,9 +9,12 @@ export default function Login() {
   const from = location.state?.from?.pathname || '/'
   const { login } = useAuth()
 
-  const handleLogin = (kind) => {
-    login(kind === 'admin' ? mockUsers.admin : mockUsers.user)
-    navigate(from, { replace: true })
+  const handleLogin = (kind: MockUserType) => {
+    const userToLogin = kind === 'admin' ? mockUsers.admin : mockUsers.user
+    if (userToLogin) {
+      login(userToLogin)
+      navigate(from, { replace: true })
+    }
   }
 
   return (
@@ -21,5 +25,3 @@ export default function Login() {
     </div>
   )
 }
-
-

@@ -5,7 +5,7 @@ import {
   LockOutlined,
 } from '@ant-design/icons'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { useAuth, mockUsers } from '../context/AuthContext.jsx'
+import { useAuth, mockUsers } from '../context/AuthContext'
 
 const { Header, Sider, Content } = Layout
 
@@ -55,5 +55,3 @@ export default function AppLayout() {
     </Layout>
   )
 }
-
-

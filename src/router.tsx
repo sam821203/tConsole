@@ -1,10 +1,10 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
-import AppLayout from './layouts/AppLayout.jsx'
-import Dashboard from './pages/Dashboard.jsx'
-import Users from './pages/Users.jsx'
-import Admin from './pages/Admin.jsx'
-import Login from './pages/Login.jsx'
-import ProtectedRoute from './routes/ProtectedRoute.jsx'
+import AppLayout from './layouts/AppLayout'
+import Dashboard from './pages/Dashboard'
+import Users from './pages/Users'
+import Admin from './pages/Admin'
+import Login from './pages/Login'
+import ProtectedRoute from './routes/ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
@@ -37,5 +37,3 @@ export const router = createBrowserRouter([
   { path: '/login', element: <Login /> },
   { path: '*', element: <Navigate to="/" /> },
 ])
-
-

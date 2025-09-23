@@ -1,15 +1,16 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
-import AppLayout from '../layouts/AppLayout.jsx'
-import Dashboard from '../pages/Dashboard.jsx'
-import Users from '../pages/Users.jsx'
-import Admin from '../pages/Admin.jsx'
-import Login from '../pages/Login.jsx'
-import ProtectedRoute from '../routes/ProtectedRoute.jsx'
-import { AuthProvider } from '../context/AuthContext.jsx'
+import AppLayout from '../layouts/AppLayout'
+import Dashboard from '../pages/Dashboard'
+import Users from '../pages/Users'
+import Admin from '../pages/Admin'
+import Login from '../pages/Login'
+import ProtectedRoute from '../routes/ProtectedRoute'
+import { AuthProvider } from '../context/AuthContext'
+import { User } from '../types'
 
-function renderWithRouter(initialEntries = ['/'], user = null) {
+function renderWithRouter(initialEntries: string[] = ['/'], user: User | null = null) {
   const routes = [
     {
       path: '/',
@@ -63,5 +64,3 @@ describe('Protected routes', () => {
     expect(await screen.findByText(/Dashboard/i)).toBeInTheDocument()
   })
 })
-
-
