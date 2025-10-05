@@ -26,5 +26,5 @@ export function useAuth(): AuthContextType {
 export const mockUsers = {
   guest: null,
   user: { name: 'Alice', roles: ['user'] } as User,
-  admin: { name: 'Bob', roles: ['admin'] } as User,
+  admin: { name: 'Sam', roles: ['admin'] } as User,
 } as const
