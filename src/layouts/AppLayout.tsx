@@ -16,23 +16,38 @@ export default function AppLayout() {
   const selectedKeys = [location.pathname]
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout className="!w-full" style={{ minHeight: '100vh' }}>
       <Sider collapsible>
         <div style={{ height: 48, margin: 16, background: 'rgba(255,255,255,0.2)' }} />
         <Menu theme="dark" mode="inline" selectedKeys={selectedKeys}>
-          <Menu.Item key="/" icon={<DashboardOutlined />}>
-            <Link to="/">Dashboard</Link>
-          </Menu.Item>
-          <Menu.Item key="/users" icon={<UserOutlined />}>
-            <Link to="/users">Users</Link>
-          </Menu.Item>
-          <Menu.Item key="/admin" icon={<LockOutlined />}>
-            <Link to="/admin">Admin</Link>
-          </Menu.Item>
+          {[
+            {
+              key: '/',
+              icon: <DashboardOutlined />,
+              label: 'Dashboard',
+              to: '/',
+            },
+            {
+              key: '/users',
+              icon: <UserOutlined />,
+              label: 'Users',
+              to: '/users',
+            },
+            {
+              key: '/admin',
+              icon: <LockOutlined />,
+              label: 'Admin',
+              to: '/admin',
+            },
+          ].map(item => (
+            <Menu.Item key={item.key} icon={item.icon}>
+              <Link to={item.to}>{item.label}</Link>
+            </Menu.Item>
+          ))}
         </Menu>
       </Sider>
-      <Layout>
-        <Header style={{ display: 'flex', alignItems: 'center', padding: '0 16px', background: '#fff' }}>
+      <Layout className='!w-full'>
+        <Header style={{ width: '100%', display: 'flex', alignItems: 'center', background: '#fff' }}>
           <Typography.Title level={4} style={{ margin: 0, flex: 1 }}>tConsole</Typography.Title>
           {user ? (
             <>
